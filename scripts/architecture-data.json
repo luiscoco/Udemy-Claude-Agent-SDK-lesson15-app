@@ -1,0 +1,273 @@
+{
+  "lanes": [
+    "Student UI",
+    "Node host",
+    "SDK + Claude",
+    "Read guard",
+    "Private files"
+  ],
+  "arrows": [
+    [
+      0,
+      1,
+      "1. Validate the chosen experiment"
+    ],
+    [
+      1,
+      4,
+      "2. Resolve owned instruction locations"
+    ],
+    [
+      1,
+      4,
+      "3. Write project, parent and personal fixtures"
+    ],
+    [
+      1,
+      2,
+      "4. Select the intended filesystem sources"
+    ],
+    [
+      1,
+      2,
+      "5. Disable CLAUDE.md independently"
+    ],
+    [
+      1,
+      2,
+      "6. Keep system prompt and project memory separate"
+    ],
+    [
+      2,
+      1,
+      "7. Guard model tool reads"
+    ],
+    [
+      1,
+      2,
+      "8. Choose root data or child data"
+    ],
+    [
+      1,
+      2,
+      "9. Start or resume the owned query"
+    ],
+    [
+      2,
+      1,
+      "10. Preserve session identity across phases"
+    ],
+    [
+      2,
+      1,
+      "11. Observe a real compaction boundary"
+    ],
+    [
+      2,
+      1,
+      "12. Keep actual final markers and phase outcomes"
+    ],
+    [
+      1,
+      0,
+      "13. Format the answer and expose safe fixture contents"
+    ]
+  ],
+  "steps": [
+    {
+      "number": 1,
+      "title": "Validate the chosen experiment",
+      "source": "src/agent.ts",
+      "code": "config=validateConfig(config);const runId=randomUUID();",
+      "language": "typescript",
+      "explanation": "Only listed source experiments and a boolean custom-prompt choice are accepted. The browser cannot submit arbitrary paths or instruction text.",
+      "firstLine": 90,
+      "lastLine": 90,
+      "anchors": [
+        "config=validateConfig(config);const runId=randomUUID();"
+      ],
+      "sourceSHA256": "2e94701a099870e6d86654fda7dafba2c8c79bcbcb39c86195ce278d11f88cdc",
+      "narration": "Step 1. Only listed source experiments and a boolean custom-prompt choice are accepted. The browser cannot submit arbitrary paths or instruction text. This source excerpt shows the corresponding application statement."
+    },
+    {
+      "number": 2,
+      "title": "Resolve owned instruction locations",
+      "source": "src/agent.ts",
+      "code": "return { parent: resolve(root, \"organization\"), cwd: resolve(root, \"organization/project\"),\n    home: resolve(root, \"home\"), sdkHome: resolve(root, \"sdk-home\") };",
+      "language": "typescript",
+      "explanation": "Each run gets an owned parent/project tree plus private home and SDK configuration paths. These classroom directories are not an OS sandbox.",
+      "firstLine": 28,
+      "lastLine": 29,
+      "anchors": [
+        "return { parent: resolve(root, \"organization\"), cwd: resolve(root, \"organization/project\"),"
+      ],
+      "sourceSHA256": "2e94701a099870e6d86654fda7dafba2c8c79bcbcb39c86195ce278d11f88cdc",
+      "narration": "Step 2. Each run gets an owned parent/project tree plus private home and SDK configuration paths. These classroom directories are not an OS sandbox. This source excerpt shows the corresponding application statement."
+    },
+    {
+      "number": 3,
+      "title": "Write project, parent and personal fixtures",
+      "source": "src/agent.ts",
+      "code": "for (const file of files) await writeFile(file.path, file.contents);",
+      "language": "typescript",
+      "explanation": "The host writes non-conflicting CLAUDE.md and rule files. Their contents are visible to students but are not copied into the task prompt.",
+      "firstLine": 44,
+      "lastLine": 44,
+      "anchors": [
+        "for (const file of files) await writeFile(file.path, file.contents);"
+      ],
+      "sourceSHA256": "2e94701a099870e6d86654fda7dafba2c8c79bcbcb39c86195ce278d11f88cdc",
+      "narration": "Step 3. The host writes non-conflicting CLAUDE.md and rule files. Their contents are visible to students but are not copied into the task prompt. This source excerpt shows the corresponding application statement."
+    },
+    {
+      "number": 4,
+      "title": "Select the intended filesystem sources",
+      "source": "src/agent.ts",
+      "code": "if (mode === \"defaults\") return undefined;\n  if (mode === \"none\") return [];\n  if (mode === \"combined\") return [\"user\", \"project\"];\n  return [\"project\"];",
+      "language": "typescript",
+      "explanation": "Omission preserves runtime defaults. An empty list skips user/project/local sources. Named arrays enable only the selected levels.",
+      "firstLine": 21,
+      "lastLine": 24,
+      "anchors": [
+        "if (mode === \"defaults\") return undefined;"
+      ],
+      "sourceSHA256": "2e94701a099870e6d86654fda7dafba2c8c79bcbcb39c86195ce278d11f88cdc",
+      "narration": "Step 4. Omission preserves runtime defaults. An empty list skips user/project/local sources. Named arrays enable only the selected levels. This source excerpt shows the corresponding application statement."
+    },
+    {
+      "number": 5,
+      "title": "Disable CLAUDE.md independently",
+      "source": "src/agent.ts",
+      "code": "...(config.mode === \"disabled\" ? {CLAUDE_CODE_DISABLE_CLAUDE_MDS:\"1\"} : {})},",
+      "language": "typescript",
+      "explanation": "The disable environment flag is independent of the selected project source. The actual result remains an observation of this pinned runtime.",
+      "firstLine": 62,
+      "lastLine": 62,
+      "anchors": [
+        "...(config.mode === \"disabled\" ? {CLAUDE_CODE_DISABLE_CLAUDE_MDS:\"1\"} : {})},"
+      ],
+      "sourceSHA256": "2e94701a099870e6d86654fda7dafba2c8c79bcbcb39c86195ce278d11f88cdc",
+      "narration": "Step 5. The disable environment flag is independent of the selected project source. The actual result remains an observation of this pinned runtime. This source excerpt shows the corresponding application statement."
+    },
+    {
+      "number": 6,
+      "title": "Keep system prompt and project memory separate",
+      "source": "src/agent.ts",
+      "code": "systemPrompt: config.custom",
+      "language": "typescript",
+      "explanation": "The custom and preset forms are application roles. CLAUDE.md and rules are separate conversation context loaded through settingSources.",
+      "firstLine": 64,
+      "lastLine": 64,
+      "anchors": [
+        "systemPrompt: config.custom"
+      ],
+      "sourceSHA256": "2e94701a099870e6d86654fda7dafba2c8c79bcbcb39c86195ce278d11f88cdc",
+      "narration": "Step 6. The custom and preset forms are application roles. CLAUDE.md and rules are separate conversation context loaded through settingSources. This source excerpt shows the corresponding application statement."
+    },
+    {
+      "number": 7,
+      "title": "Guard model tool reads",
+      "source": "src/agent.ts",
+      "code": "return [\"data.md\", \"feature/data.md\"].some(file => candidate === resolve(cwd,file).toLowerCase());",
+      "language": "typescript",
+      "explanation": "The host permits only the exact owned data files. Model tools cannot Read instruction files to imitate implicit loading.",
+      "firstLine": 53,
+      "lastLine": 53,
+      "anchors": [
+        "return [\"data.md\", \"feature/data.md\"].some(file => candidate === resolve(cwd,file).toLowerCase());"
+      ],
+      "sourceSHA256": "2e94701a099870e6d86654fda7dafba2c8c79bcbcb39c86195ce278d11f88cdc",
+      "narration": "Step 7. The host permits only the exact owned data files. Model tools cannot Read instruction files to imitate implicit loading. This source excerpt shows the corresponding application statement."
+    },
+    {
+      "number": 8,
+      "title": "Choose root data or child data",
+      "source": "src/agent.ts",
+      "code": ": config.mode === \"child\" ? PROMPTS.task.replace(\"Read data.md\",\"Read feature/data.md\")",
+      "language": "typescript",
+      "explanation": "The child task reads feature/data.md while cwd remains the project root. That file access can trigger on-demand child instructions.",
+      "firstLine": 100,
+      "lastLine": 100,
+      "anchors": [
+        ": config.mode === \"child\" ? PROMPTS.task.replace(\"Read data.md\",\"Read feature/data.md\")"
+      ],
+      "sourceSHA256": "2e94701a099870e6d86654fda7dafba2c8c79bcbcb39c86195ce278d11f88cdc",
+      "narration": "Step 8. The child task reads feature/data.md while cwd remains the project root. That file access can trigger on-demand child instructions. This source excerpt shows the corresponding application statement."
+    },
+    {
+      "number": 9,
+      "title": "Start or resume the owned query",
+      "source": "src/agent.ts",
+      "code": "const run = query({prompt,options:{...options,...(sessionId ? {resume:sessionId} : {})}});",
+      "language": "typescript",
+      "explanation": "Only the session ID observed inside this run can be resumed. The browser cannot attach to an arbitrary remote session.",
+      "firstLine": 102,
+      "lastLine": 102,
+      "anchors": [
+        "const run = query({prompt,options:{...options,...(sessionId ? {resume:sessionId} : {})}});"
+      ],
+      "sourceSHA256": "2e94701a099870e6d86654fda7dafba2c8c79bcbcb39c86195ce278d11f88cdc",
+      "narration": "Step 9. Only the session ID observed inside this run can be resumed. The browser cannot attach to an arbitrary remote session. This source excerpt shows the corresponding application statement."
+    },
+    {
+      "number": 10,
+      "title": "Preserve session identity across phases",
+      "source": "src/agent.ts",
+      "code": "if (sessionId && message.session_id !== sessionId) throw new Error(\"Owned session identity changed unexpectedly.\");",
+      "language": "typescript",
+      "explanation": "Summary, compaction and recall retain the same observed session identity. A mismatch is an error rather than a hidden fresh query.",
+      "firstLine": 108,
+      "lastLine": 108,
+      "anchors": [
+        "if (sessionId && message.session_id !== sessionId) throw new Error(\"Owned session identity changed unexpectedly.\");"
+      ],
+      "sourceSHA256": "2e94701a099870e6d86654fda7dafba2c8c79bcbcb39c86195ce278d11f88cdc",
+      "narration": "Step 10. Summary, compaction and recall retain the same observed session identity. A mismatch is an error rather than a hidden fresh query. This source excerpt shows the corresponding application statement."
+    },
+    {
+      "number": 11,
+      "title": "Observe a real compaction boundary",
+      "source": "src/agent.ts",
+      "code": "compactBoundaries++;\n          emit({type:\"boundary\",trigger:message.compact_metadata.trigger,preTokens:message.compact_metadata.pre_tokens});",
+      "language": "typescript",
+      "explanation": "A system compact_boundary message records actual compaction. Continued instruction compliance is checked in the following real query; this is not a wire-level prompt capture.",
+      "firstLine": 113,
+      "lastLine": 114,
+      "anchors": [
+        "compactBoundaries++;"
+      ],
+      "sourceSHA256": "2e94701a099870e6d86654fda7dafba2c8c79bcbcb39c86195ce278d11f88cdc",
+      "narration": "Step 11. A system compact_boundary message records actual compaction. Continued instruction compliance is checked in the following real query; this is not a wire-level prompt capture. This source excerpt shows the corresponding application statement."
+    },
+    {
+      "number": 12,
+      "title": "Keep actual final markers and phase outcomes",
+      "source": "src/agent.ts",
+      "code": "phases.push({phase,status,markers:MARKERS.filter(m=>text.includes(m))});",
+      "language": "typescript",
+      "explanation": "Extract markers from actual SDK text and retain phase outcomes. Missing compliance is never replaced with an expected answer.",
+      "firstLine": 123,
+      "lastLine": 123,
+      "anchors": [
+        "phases.push({phase,status,markers:MARKERS.filter(m=>text.includes(m))});"
+      ],
+      "sourceSHA256": "2e94701a099870e6d86654fda7dafba2c8c79bcbcb39c86195ce278d11f88cdc",
+      "narration": "Step 12. Extract markers from actual SDK text and retain phase outcomes. Missing compliance is never replaced with an expected answer. This source excerpt shows the corresponding application statement."
+    },
+    {
+      "number": 13,
+      "title": "Format the answer and expose safe fixture contents",
+      "source": "src/client.ts",
+      "code": "if (e.type === \"answer\") renderMarkdown($(\"answer\"), e.text);",
+      "language": "typescript",
+      "explanation": "The browser renders sanitized Markdown. Instruction files are shown separately as plain, readable text for students.",
+      "firstLine": 18,
+      "lastLine": 18,
+      "anchors": [
+        "if (e.type === \"answer\") renderMarkdown($(\"answer\"), e.text);"
+      ],
+      "sourceSHA256": "819cde789e6065be0ed341b21ab51f07aee16668bad6bb402c668b85e0092c1d",
+      "narration": "Step 13. The browser renders sanitized Markdown. Instruction files are shown separately as plain, readable text for students. This source excerpt shows the corresponding application statement."
+    }
+  ]
+}
